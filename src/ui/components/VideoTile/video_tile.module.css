@@ -1,5 +1,17 @@
 .video-tile {
     width: 200px;
     height: 250px;
-    background-color: rgb(57, 67, 110);
+    border: 1px solid grey;
+}
+
+.border-selected {
+    border-color: rgb(0, 81, 255);
+}
+
+.bg-overlay {
+    background-color: #70707088;
+}
+
+.bg-placeholder {
+    background-color: rgb(39, 39, 39);
 }

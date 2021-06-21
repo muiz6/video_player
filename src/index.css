@@ -1,7 +1,9 @@
 :root {
     --clr-background: rgb(20, 20, 20);
+    --clr-on-background: white;
 
     --inset-s: 8px;
+    --inset-m: 16px;
 }
 
 /* Global Overrides */
@@ -16,9 +18,45 @@ body {
     background-color: var(--clr-background);
 }
 
+a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+/* --------- */
 /* Utilities */
+/* --------- */
+
+/* color utils */
+
+.text-on-background {
+    color: var(--clr-on-background);
+}
+
+/* spacing utils */
 
 .px-s {
     padding-left: var(--inset-s);
     padding-right: var(--inset-s);
+}
+
+.py-m {
+    padding-top: var(--inset-m);
+    padding-bottom: var(--inset-m);
+}
+
+/* radius utils */
+
+.rounded-xs {
+    border-radius: 5px;
+}
+
+/* text utils */
+
+.text-center {
+    text-align: center;
+}
+
+.overflow-hidden {
+    overflow: hidden;
 }
