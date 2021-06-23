@@ -1,6 +1,7 @@
 :root {
     --clr-background: rgb(20, 20, 20);
     --clr-on-background: white;
+    --clr-on-background-variant: grey;
 
     --inset-s: 8px;
     --inset-m: 16px;
@@ -15,7 +16,8 @@
 }
 
 body {
-    background-color: var(--clr-background);
+    background-color: black;
+    font-family: sans-serif;
 }
 
 a {
@@ -29,11 +31,27 @@ a {
 
 /* color utils */
 
+.bg-black {
+    background-color: black;
+}
+
 .text-on-background {
     color: var(--clr-on-background);
 }
 
+.text-on-background-variant {
+    color: var(--clr-on-background-variant);
+}
+
 /* spacing utils */
+
+.p-s {
+    padding: var(--inset-s);
+}
+
+.pt-s {
+    padding: var(--inset-s);
+}
 
 .px-s {
     padding-left: var(--inset-s);
@@ -57,6 +75,20 @@ a {
     text-align: center;
 }
 
+/* other utils */
+
 .overflow-hidden {
     overflow: hidden;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.w-100 {
+    width: 100%;
 }

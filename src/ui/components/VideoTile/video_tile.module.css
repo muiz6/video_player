@@ -6,6 +6,7 @@
 
 .border-selected {
     border-color: rgb(0, 81, 255);
+    border-width: 2px;
 }
 
 .bg-overlay {

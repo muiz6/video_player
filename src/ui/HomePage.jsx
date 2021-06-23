@@ -6,8 +6,18 @@ import VideoTile from './components/VideoTile';
 import Footer from './components/Footer';
 import Player from './components/Player';
 import ApiClient from '../data/ApiClient';
+import TitleBar from './components/TitleBar';
+import GridView from './components/GridView';
+import useWindowInnerSize from './hooks/useWindowInnerSize';
 
 const apiClient = ApiClient();
+
+const getCss = (windowWidth, index) => {
+  if (windowWidth >= 576) {
+    return index % 2 ? '' : 'justify-content-end';
+  }
+  return 'justify-content-center';
+};
 
 export default () => {
   const [videos, setVideos] = useState([]);
@@ -19,31 +29,73 @@ export default () => {
 
   // using window.location does not change page content
   const query = new URLSearchParams(useLocation().search);
+  const selectedId = Number(query?.get('vid') || 1);
+
+  const size = useWindowInnerSize();
 
   return (
     <>
       <header>
-        <Player vidSrc={videos.length ? `/api/videos/${query?.get('vid') || '1'}` : undefined} />
+        <div className="position-absolute w-100">
+          <TitleBar />
+        </div>
+        <Player vidSrc={videos.length ? `/api/videos/${selectedId}` : undefined} />
       </header>
       <footer>
         <Footer>
-          <div style={{ marginTop: '-20px' }}>
-            <Slider>
-              {
-                videos.length
-                  ? (
-                    videos.map((e, index) => (
-                      <Link to={`?vid=${e.id}`}>
-                        <VideoTile imgSrc={videos[index]?.thumbnailUrl} />
-                      </Link>
-                    ))
-                  )
-                  : [1, 2, 3, 4].map(() => (<VideoTile />))
-              }
-            </Slider>
+          <div className="container">
+            {
+              size.width >= 992
+                ? (
+                  <div style={{ marginTop: '-20px' }}>
+                    <Slider>
+                      {
+                        videos.length
+                          ? (
+                            videos.map((video, index) => (
+                              <Link to={`?vid=${video.id}`}>
+                                <VideoTile
+                                  selected={video.id === selectedId}
+                                  imgSrc={videos[index]?.thumbnailUrl}
+                                />
+                              </Link>
+                            ))
+                          )
+                          : [1, 2, 3, 4].map(() => (<VideoTile />))
+                      }
+                    </Slider>
+                  </div>
+                )
+                : (
+                  <div className="pt-s">
+                    <GridView cols={size.width >= 576 ? 2 : 1}>
+                      {
+                        videos.length
+                          ? (
+                            videos.map((video, index) => (
+                              <div className={`d-flex ${getCss(size.width, index)} p-s`}>
+                                <Link to={`?vid=${video.id}`}>
+                                  <VideoTile
+                                    selected={video.id === selectedId}
+                                    imgSrc={videos[index]?.thumbnailUrl}
+                                  />
+                                </Link>
+                              </div>
+                            ))
+                          )
+                          : [1, 2, 3, 4].map(() => (<VideoTile />))
+                      }
+                    </GridView>
+                  </div>
+                )
+            }
           </div>
         </Footer>
-        <div style={{ height: '50px', backgroundColor: 'black' }} />
+        <div className="bg-black">
+          <div className="container py-m">
+            <p className="text-on-background-variant">Made By Muhammad Muiz</p>
+          </div>
+        </div>
       </footer>
     </>
   );
