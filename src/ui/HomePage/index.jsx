@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import Slider from './components/Slider';
-import VideoTile from './components/VideoTile';
-import Footer from './components/Footer';
-import Player from './components/Player';
-import ApiClient from '../data/ApiClient';
-import TitleBar from './components/TitleBar';
-import GridView from './components/GridView';
-import useWindowInnerSize from './hooks/useWindowInnerSize';
+import Slider from '../components/Slider';
+import VideoTile from '../components/VideoTile';
+import Footer from '../components/Footer';
+import Player from '../components/Player';
+import ApiClient from '../../data/ApiClient';
+import TitleBar from '../components/TitleBar';
+import GridView from '../components/GridView';
+import useWindowInnerSize from '../hooks/useWindowInnerSize';
+import styles from './home_page.module.css';
 
 const apiClient = ApiClient();
 
@@ -36,7 +37,7 @@ export default () => {
   return (
     <>
       <header>
-        <div className="position-absolute w-100">
+        <div className={`position-absolute w-100 ${styles['title-bar']}`}>
           <TitleBar />
         </div>
         <Player vidSrc={videos.length ? `/api/videos/${selectedId}` : undefined} />
@@ -47,7 +48,7 @@ export default () => {
             {
               size.width >= 992
                 ? (
-                  <div style={{ marginTop: '-20px' }}>
+                  <div className={styles.slider}>
                     <Slider>
                       {
                         videos.length

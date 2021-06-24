@@ -1,0 +1,9 @@
+.player {
+    /* 2.39:1 aspect ratio */
+    width: 100%;
+    height: 41.84vw;
+
+    /* fix for <video/> drawing on top in chromium based browsers */
+    position: relative;
+    z-index: 0;
+}

@@ -1,7 +1,12 @@
 import React from 'react';
+import styles from './player.module.css';
 
 export default ({ vidSrc }) => (
-  <video controls src={vidSrc} width="100%" height="560vw">
+  <video
+    controls
+    src={vidSrc}
+    className={styles.player}
+  >
     <track
       default
       kind="captions"

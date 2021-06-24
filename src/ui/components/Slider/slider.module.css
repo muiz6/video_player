@@ -1,9 +1,9 @@
 .animated-tile {
-    transition: margin 500ms, scale 300ms;
+    transition: margin 500ms, transform 300ms;
 }
 
 .animated-tile:hover {
-    scale: 110%;
+    transform: scale(1.10);
     margin-left: 50px;
     margin-right: 50px;
 }

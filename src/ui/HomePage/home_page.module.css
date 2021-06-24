@@ -1,0 +1,11 @@
+.slider {
+    margin-top: -20px;
+
+    /* needed to fix <video /> overlap behaviour in chromium based browsers */
+    position: relative;
+    z-index: 1;
+}
+
+.title-bar {
+    z-index: 1;
+}
