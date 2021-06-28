@@ -1,0 +1,21 @@
+.bar-container {
+    height: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.bar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 2px;
+    transform: translateY(-50%);
+}
+
+.primary-bar {
+    background-color: white;
+}
+
+.secondary-bar {
+    background-color: #ffffff60;
+}
