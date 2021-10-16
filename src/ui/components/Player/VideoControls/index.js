@@ -4,12 +4,7 @@ import View from './View';
 
 function VideoControls({ videoRef }) {
   const [state, setState] = useState(PlayerState());
-
-  useEffect(() => {
-    listenState(videoRef.current, (playerState) => {
-      setState(playerState);
-    });
-  }, []);
+  useEffect(() => listenState(videoRef.current, (playerState) => setState(playerState)), []);
 
   return View(
     state,
@@ -21,10 +16,10 @@ function VideoControls({ videoRef }) {
   );
 }
 
-function listenState(video, state) {
-  video.addEventListener('play', () => state(PlayerState(video)));
-  video.addEventListener('pause', () => state(PlayerState(video)));
-  video.addEventListener('timeupdate', () => state(PlayerState(video)));
+function listenState(video, stateCallback) {
+  video.addEventListener('play', () => stateCallback(PlayerState(video)));
+  video.addEventListener('pause', () => stateCallback(PlayerState(video)));
+  video.addEventListener('timeupdate', () => stateCallback(PlayerState(video)));
 }
 
 function PlayerState(video) {
