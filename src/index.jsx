@@ -8,10 +8,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import HomePage from './ui/HomePage';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <HomePage />
-    </Router>
-  </React.StrictMode>,
+  (
+    <React.StrictMode>
+      <Router>
+        <HomePage />
+      </Router>
+    </React.StrictMode>
+  ),
   document.getElementById('root'),
 );
