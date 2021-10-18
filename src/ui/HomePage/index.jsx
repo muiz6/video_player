@@ -9,6 +9,7 @@ import ApiClient from '../../data/ApiClient';
 import TitleBar from '../components/TitleBar';
 import GridView from '../components/GridView';
 import useWindowInnerSize from '../hooks/useWindowInnerSize';
+
 import styles from './home_page.module.css';
 
 const apiClient = ApiClient();
@@ -40,7 +41,10 @@ export default () => {
         <div className={`position-absolute w-100 ${styles['title-bar']}`}>
           <TitleBar />
         </div>
-        <Player vidSrc={videos.length ? `/api/videos/${selectedId}` : undefined} />
+        <Player
+          vidSrc={videos.length ? `/api/videos/${selectedId}` : undefined}
+          vidPoster={videos.find((vid) => vid.id === selectedId)?.thumbnailUrl}
+        />
       </header>
       <footer>
         <Footer>

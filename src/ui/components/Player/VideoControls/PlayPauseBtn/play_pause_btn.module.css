@@ -1,0 +1,7 @@
+.play-pause-btn {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    border-width: 0;
+}
